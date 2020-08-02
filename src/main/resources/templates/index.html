@@ -1,10 +1,33 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Getting Started: Serving Web Content</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <p th:text="'Hello, ' + ${name} + '!'" />
+<div>
+  <div id="timer"></div>
+  <script th:src="@{/js/timer.js}"></script>
+  <input type="button" value="Start" onclick="countdown()">
+  <input type="button" value="Stop" onclick="pause()">
+  <input type="button" value="Reset" onclick="reset()">
+  <div id="timer2"></div>
+  <div>
+    <span class="days"></span>
+    <div class="smalltext">Days</div>
+  </div>
+  <div>
+    <span class="hours"></span>
+    <div class="smalltext">Hours</div>
+  </div>
+  <div>
+    <span class="minutes"></span>
+    <div class="smalltext">Minutes</div>
+  </div>
+  <div>
+    <span class="seconds"></span>
+    <div class="smalltext">Seconds</div>
+  </div>
+</div>
 </body>
 </html>
