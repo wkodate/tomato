@@ -1,10 +1,10 @@
-let timer = (id, endtime) => {
+const timer = (id, endtime) => {
   const clock = document.getElementById(id);
-  const countdown = clock.querySelector('.countdown');
+  const remaining = clock.querySelector('.remaining');
 
   function updateClock() {
     const t = getTimeRemaining(endtime);
-    countdown.innerHTML = ('0' + t.minutes).slice(-2) + ":" + ('0' + t.seconds).slice(-2);
+    remaining.innerHTML = ('0' + t.minutes).slice(-2) + ":" + ('0' + t.seconds).slice(-2);
     if (t.total <= 0) {
       clearInterval(timeinterval);
     }
@@ -12,18 +12,9 @@ let timer = (id, endtime) => {
 
   updateClock();
   const timeinterval = setInterval(updateClock, 1000);
-}
+};
 
-function start() {
-}
-
-function pause() {
-}
-
-function reset() {
-}
-
-function getTimeRemaining(endtime) {
+const getTimeRemaining = (endtime) => {
   const total = Date.parse(endtime) - Date.parse(new Date());
   const seconds = Math.floor((total / 1000) % 60);
   const minutes = Math.floor((total / 1000 / 60) % 60);
@@ -37,7 +28,16 @@ function getTimeRemaining(endtime) {
     minutes,
     seconds
   };
-}
+};
+
+const start = () => {
+};
+
+const pause = () => {
+};
+
+const reset = () => {
+};
 
 const timeInMinutes = 25;
 const deadline = new Date(Date.parse(new Date()) + timeInMinutes * 60 * 1000);
