@@ -70,6 +70,7 @@ const reset = () => {
   currentTime = timeInSeconds;
   const t = getTimeRemaining(currentTime);
   timerSelector.innerHTML = ('0' + t.minutes).slice(-2) + ":" + ('0' + t.seconds).slice(-2);
+  progressSelector.innerHTML = updateProgress(0);
 };
 
 const timeInMinutes = 25;
