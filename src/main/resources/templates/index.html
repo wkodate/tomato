@@ -8,10 +8,16 @@
 <div>
   <div id="timer">
     <div>
-      <span class="remaining"></span>
+      <span class="timer"></span>
+    </div>
+    <div>
+      <span class="progressBar"></span>
     </div>
     <input type="button" value="Start/Stop" onclick="startstop()">
     <input type="button" value="Reset" onclick="reset()">
+    <div>
+      <span class="tasks"></span>
+    </div>
     <script th:src="@{/js/timer.js}"></script>
   </div>
 </div>
