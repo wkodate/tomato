@@ -2,10 +2,22 @@ const timer = () => {
   function updateClock() {
     const t = getTimeRemaining(currentTime);
     if (t.total <= 0) {
-      taskCounter++;
-      taskSelector.innerHTML = updateTasks(taskCounter);
+      taskCount = parseInt(storage.getItem('task'));
+      taskCount++;
+      storage.setItem('task', taskCount);
+      taskSelector.innerHTML = updateTasks(taskCount);
       progressSelector.innerHTML = updateProgress(0);
       clearInterval(timeinterval);
+      /**
+      let music = new Audio("/resources/static/js/sound.mp3");
+      let playPromise = music.play();
+      if (playPromise !== undefined) {
+        playPromise.then(function () {
+        }).catch(function (error) {
+          console.log(error);
+        });
+      }
+       */
     }
     console.log(t);
     timerSelector.innerHTML = ('0' + t.minutes).slice(-2) + ":" + ('0' + t.seconds).slice(-2);
@@ -77,16 +89,16 @@ const timeInMinutes = 25;
 //const timeInMinutes = 1;
 const timeInSeconds = timeInMinutes * 60;
 const t = getTimeRemaining(timeInSeconds);
+const storage = localStorage;
+storage.setItem('task', '0');
 
 let currentTime = timeInSeconds;
-let taskCounter = 0;
-//let progressCounter = 5;
 let timeinterval;
 let starting = false;
 
 const timerSelector = document.getElementById("timer").querySelector('.timer');
 timerSelector.innerHTML = ('0' + t.minutes).slice(-2) + ":" + ('0' + t.seconds).slice(-2);
 const taskSelector = document.getElementById("timer").querySelector('.tasks');
-taskSelector.innerHTML = updateTasks(taskCounter);
+taskSelector.innerHTML = updateTasks(parseInt(storage.getItem('task')));
 const progressSelector = document.getElementById("timer").querySelector('.progressBar');
 progressSelector.innerHTML = updateProgress(0);
